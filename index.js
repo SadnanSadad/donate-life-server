@@ -105,6 +105,13 @@ async function run() {
       res.send(result);
     })
 
+    app.get('/blood-req/email/:email', async (req, res) => {
+      const email = req.params.email;
+      const query = { email: email }
+      const result = await bloodRequestCollection.find(query).toArray();
+      res.send(result);
+    })
+
     app.post("/blood-req", async (req, res) => {
       const bloodReq = req.body;
 
